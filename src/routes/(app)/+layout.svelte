@@ -1,19 +1,17 @@
-<script lang="ts">
-    import "carbon-components-svelte/css/g90.css";
-		import {
-			Content,
-			Header,
-			HeaderAction,
-			HeaderPanelDivider, HeaderPanelLink,
-			HeaderPanelLinks,
-			HeaderUtilities, SideNav, SideNavItems, SideNavLink,
-			SkipToContent
-		} from 'carbon-components-svelte';
-		import { UserAvatarFilledAlt } from 'carbon-icons-svelte';
-		import { logout } from '$lib/auth_service';
+<script lang='ts'>
+	import {
+		Content,
+		Header,
+		HeaderAction,
+		HeaderPanelDivider, HeaderPanelLink,
+		HeaderPanelLinks,
+		HeaderUtilities, SideNav, SideNavItems, SideNavLink,
+		SkipToContent
+	} from 'carbon-components-svelte';
+	import { UserAvatarFilledAlt } from 'carbon-icons-svelte';
 
-		let isSideNavOpen = false;
-		let isAccMenuOpen = false;
+	let isSideNavOpen = false;
+	let isAccMenuOpen = false;
 
 </script>
 
@@ -28,7 +26,7 @@
 				<HeaderPanelLink>Your Profile</HeaderPanelLink>
 				<HeaderPanelLink>Account Settings</HeaderPanelLink>
 				<HeaderPanelDivider>Actions</HeaderPanelDivider>
-				<HeaderPanelLink on:click={logout}>Logout</HeaderPanelLink>
+				<HeaderPanelLink href='/logout'>Logout</HeaderPanelLink>
 			</HeaderPanelLinks>
 		</HeaderAction>
 	</HeaderUtilities>
