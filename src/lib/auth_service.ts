@@ -36,7 +36,6 @@ export const login = async (username: string, password: string): Promise<{ statu
 export const logout = () => {
 	user.set({ accessKey: '', refreshKey: ''});
 	document.cookie = 'keys=a;path="/";expires=Thu, 01 Jan 1970 00:00:01 GMT';
-	goto('/');
 }
 
 export const refreshAccessToken = async (refresh: string) => {
