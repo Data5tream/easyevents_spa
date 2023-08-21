@@ -1,8 +1,9 @@
-<script lang='ts'>
+<script lang="ts">
 	import {
 		Button,
 		Column,
-		Form, FormGroup,
+		Form,
+		FormGroup,
 		Grid,
 		InlineNotification,
 		PasswordInput,
@@ -38,26 +39,33 @@
 			<h2>Creator Login</h2>
 			<Form on:submit={onLogin}>
 				{#if errorMsg}
-					<InlineNotification
-						kind='error'
-						title='Error:'
-						subtitle={errorMsg}
-						/>
+					<InlineNotification kind="error" title="Error:" subtitle={errorMsg} />
 				{/if}
 				<FormGroup>
-					<TextInput disabled={loading} labelText='Email' placeholder='Enter email...' type='email' required
-										 bind:value={email} />
+					<TextInput
+						disabled={loading}
+						labelText="Email"
+						placeholder="Enter email..."
+						type="email"
+						required
+						bind:value={email}
+					/>
 				</FormGroup>
 				<FormGroup>
-					<PasswordInput disabled={loading} labelText='Password' placeholder='Enter password...' required
-												 bind:value={password} />
+					<PasswordInput
+						disabled={loading}
+						labelText="Password"
+						placeholder="Enter password..."
+						required
+						bind:value={password}
+					/>
 				</FormGroup>
-				<Button skeleton={loading} type='submit'>Login</Button>
+				<Button skeleton={loading} type="submit">Login</Button>
 			</Form>
 			<InlineNotification
 				hideCloseButton
-				kind='warning'
-				title='This login is only for event organizers:'
+				kind="warning"
+				title="This login is only for event organizers:"
 				subtitle="If you want to join a event, you're at the wrong place."
 			/>
 		</Column>
@@ -65,11 +73,11 @@
 </Grid>
 
 <style>
-    h1 {
-        margin: 92px 0 32px;
-    }
+	h1 {
+		margin: 92px 0 32px;
+	}
 
-    h2 {
-        margin-bottom: 2rem;
-    }
+	h2 {
+		margin-bottom: 2rem;
+	}
 </style>

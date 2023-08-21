@@ -1,15 +1,11 @@
-<script lang='ts'>
-	import {
-		Content,
-		Header,
-		SkipToContent
-	} from 'carbon-components-svelte';
+<script lang="ts">
+	import { Content, Header, SkipToContent } from 'carbon-components-svelte';
 
 	export const ssr = false;
 </script>
 
-<Header company='EasyEvents'>
-	<svelte:fragment slot='skip-to-content'>
+<Header company="EasyEvents">
+	<svelte:fragment slot="skip-to-content">
 		<SkipToContent />
 	</svelte:fragment>
 </Header>

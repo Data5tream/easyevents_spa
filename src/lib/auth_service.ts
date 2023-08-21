@@ -2,14 +2,17 @@ import { PUBLIC_API_HOST } from '$env/static/public';
 import { user } from '$lib/stores';
 import { goto } from '$app/navigation';
 
-export const login = async (username: string, password: string): Promise<{ status: number, detail?: string}> => {
+export const login = async (
+	username: string,
+	password: string
+): Promise<{ status: number; detail?: string }> => {
 	const form = new FormData();
 	form.set('username', username);
 	form.set('password', password);
 
 	const res = await fetch(`${PUBLIC_API_HOST}/api/token`, {
 		method: 'POST',
-		body: form,
+		body: form
 	});
 
 	const status = res.status;
@@ -25,23 +28,23 @@ export const login = async (username: string, password: string): Promise<{ statu
 		user.set(dataEle);
 		document.cookie = `keys=${encodeURIComponent(JSON.stringify(dataEle))};path='/';SameSite=Strict;Secure`
 
-		return { status }
+		return { status };
 	}
 
 	const detail = (await res.json()).detail;
 
- 	return { status, detail };
-}
+	return { status, detail };
+};
 
 export const logout = () => {
-	user.set({ accessKey: '', refreshKey: ''});
+	user.set({ accessKey: '', refreshKey: '' });
 	document.cookie = 'keys=a;path="/";expires=Thu, 01 Jan 1970 00:00:01 GMT';
-}
+};
 
 export const refreshAccessToken = async (refresh: string) => {
 	const res = await fetch(`${PUBLIC_API_HOST}/api/token/refresh`, {
 		method: 'POST',
-		headers: new Headers({ 'Content-Type': 'application/json'}),
+		headers: new Headers({ 'Content-Type': 'application/json' }),
 		body: JSON.stringify({ refresh })
 	});
 
@@ -51,8 +54,7 @@ export const refreshAccessToken = async (refresh: string) => {
 	}
 
 	return false;
-}
-
+};
 
 export const makeApiCall = async (url: string, config: RequestInit): Promise<Response> => {
 	let userVal = {
@@ -71,7 +73,7 @@ export const makeApiCall = async (url: string, config: RequestInit): Promise<Res
 	const init = {
 		...config,
 		headers: new Headers({
-			Authorization: `Bearer ${userVal.accessKey}`,
+			Authorization: `Bearer ${userVal.accessKey}`
 		})
 	};
 
@@ -85,4 +87,4 @@ export const makeApiCall = async (url: string, config: RequestInit): Promise<Res
 	}
 
 	return res;
-}
+};

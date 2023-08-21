@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ApiEvent} from '$lib/api_service';
+	import type { ApiEvent } from '$lib/api_service';
 	import { onMount } from 'svelte';
 	import { loadEvents } from '$lib/api_service';
 	import {
@@ -51,12 +51,12 @@
 	onMount(async () => {
 		events = await loadEvents();
 		loaded = true;
-	})
+	});
 </script>
 
 {#if !events.length && !loaded}
 	<DataTableSkeleton {headers} rows={10} />
-{:else }
+{:else}
 	<DataTable {title} {description} {headers} rows={events}>
 		<Toolbar>
 			<ToolbarContent>
@@ -64,9 +64,9 @@
 				<Button>Create Event</Button>
 			</ToolbarContent>
 		</Toolbar>
-		<svelte:fragment slot='cell' let:cell>
+		<svelte:fragment slot="cell" let:cell>
 			{#if ['start_date', 'end_date', 'signup_start', 'signup_end'].includes(cell.key)}
-				{(new Date(cell.value)).toLocaleString()}
+				{new Date(cell.value).toLocaleString()}
 			{:else}
 				{cell.value}
 			{/if}
