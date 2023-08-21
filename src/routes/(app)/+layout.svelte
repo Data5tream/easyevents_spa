@@ -8,7 +8,7 @@
 		HeaderUtilities, SideNav, SideNavItems, SideNavLink,
 		SkipToContent
 	} from 'carbon-components-svelte';
-	import { UserAvatarFilledAlt } from 'carbon-icons-svelte';
+	import { Dashboard, Events, EventSchedule, UserAvatarFilledAlt } from 'carbon-icons-svelte';
 
 	let isSideNavOpen = false;
 	let isAccMenuOpen = false;
@@ -32,9 +32,11 @@
 	</HeaderUtilities>
 </Header>
 
-<SideNav bind:isOpen={isSideNavOpen}>
+<SideNav bind:isOpen={isSideNavOpen} rail>
 	<SideNavItems>
-		<SideNavLink text='Home' href='/' />
+		<SideNavLink icon={Dashboard} text='Dashboard' href='/' />
+		<SideNavLink icon={EventSchedule} text='Events' href='/events' />
+		<SideNavLink icon={Events} text='Participants' />
 	</SideNavItems>
 </SideNav>
 
