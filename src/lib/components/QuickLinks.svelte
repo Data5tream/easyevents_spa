@@ -1,20 +1,19 @@
 <script lang="ts">
-	import { Column, Grid, Row, Tile } from 'carbon-components-svelte';
+	import { ClickableTile, Column, Grid, Row, Tile } from 'carbon-components-svelte';
 	import { ArrowRight } from 'carbon-icons-svelte';
-	import { goto } from '$app/navigation';
 </script>
 
 <div class="quick-links">
 	<Grid noGutter>
 		<Row>
 			<Column md={4}>
-				<Tile class="link-card events" on:click={() => goto('/events')}>
+				<ClickableTile class="link-card events" href='/events'>
 					<h2>Events</h2>
 					<p>Edit the events you have created.</p>
 					<div class="arrow">
 						<ArrowRight size={24} />
 					</div>
-				</Tile>
+				</ClickableTile>
 			</Column>
 			<Column md={4}>
 				<Tile class="link-card participants">
@@ -41,7 +40,6 @@
 		position: relative;
 		padding-right: 2rem;
 		height: 12rem;
-		cursor: pointer;
 	}
 	:global(.link-card.events) {
 		background: rgb(45, 113, 182);
