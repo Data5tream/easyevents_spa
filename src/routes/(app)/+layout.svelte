@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import {
 		Content,
 		Header,
@@ -16,7 +17,30 @@
 
 	let isSideNavOpen = false;
 	let isAccMenuOpen = false;
+
+	let width: number;
+	let isMobile = false;
+	$: isMobile = width < 480;
+	const links = [
+		{
+			icon: Dashboard,
+			text: 'Dashboard',
+			href: '/'
+		},
+		{
+			icon: EventSchedule,
+			text: 'Events',
+			href: '/events'
+		},
+		{
+			icon: Events,
+			text: 'Participants',
+			href: ''
+		}
+	];
 </script>
+
+<svelte:window bind:innerWidth={width} />
 
 <Header company="EasyEvents" bind:isSideNavOpen>
 	<svelte:fragment slot="skip-to-content">
@@ -37,15 +61,38 @@
 			</HeaderPanelLinks>
 		</HeaderAction>
 	</HeaderUtilities>
+
+	{#if isMobile}
+		<SideNav bind:isOpen={isSideNavOpen}>
+			<SideNavItems>
+				{#each links as link}
+					<SideNavLink
+						icon={link.icon}
+						text={link.text}
+						href={link.href}
+						isSelected={link.href === $page.url.pathname}
+						on:click={() => (isSideNavOpen = false)}
+					/>
+				{/each}
+			</SideNavItems>
+		</SideNav>
+	{/if}
 </Header>
 
-<SideNav bind:isOpen={isSideNavOpen} rail>
-	<SideNavItems>
-		<SideNavLink icon={Dashboard} text="Dashboard" href="/" />
-		<SideNavLink icon={EventSchedule} text="Events" href="/events" />
-		<SideNavLink icon={Events} text="Participants" />
-	</SideNavItems>
-</SideNav>
+{#if !isMobile}
+	<SideNav bind:isOpen={isSideNavOpen} rail>
+		<SideNavItems>
+			{#each links as link}
+				<SideNavLink
+					icon={link.icon}
+					text={link.text}
+					href={link.href}
+					isSelected={link.href === $page.url.pathname}
+				/>
+			{/each}
+		</SideNavItems>
+	</SideNav>
+{/if}
 
 <Content>
 	<slot />
