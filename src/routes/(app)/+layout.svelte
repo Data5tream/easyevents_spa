@@ -14,13 +14,16 @@
 		SkipToContent
 	} from 'carbon-components-svelte';
 	import { Dashboard, Events, EventSchedule, UserAvatarFilledAlt } from 'carbon-icons-svelte';
+	import { isMobile } from '$lib/stores';
 
 	let isSideNavOpen = false;
 	let isAccMenuOpen = false;
 
-	let width: number;
-	let isMobile = false;
-	$: isMobile = width < 480;
+	let mobile = true;
+	isMobile.subscribe((value) => {
+		mobile = value;
+	});
+
 	const links = [
 		{
 			icon: Dashboard,
@@ -39,8 +42,6 @@
 		}
 	];
 </script>
-
-<svelte:window bind:innerWidth={width} />
 
 <Header company="EasyEvents" bind:isSideNavOpen>
 	<svelte:fragment slot="skip-to-content">
@@ -62,7 +63,7 @@
 		</HeaderAction>
 	</HeaderUtilities>
 
-	{#if isMobile}
+	{#if mobile}
 		<SideNav bind:isOpen={isSideNavOpen}>
 			<SideNavItems>
 				{#each links as link}
@@ -79,7 +80,7 @@
 	{/if}
 </Header>
 
-{#if !isMobile}
+{#if !mobile}
 	<SideNav bind:isOpen={isSideNavOpen} rail>
 		<SideNavItems>
 			{#each links as link}
