@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Content, Header, SkipToContent } from 'carbon-components-svelte';
-
-	export const ssr = false;
 </script>
 
 <Header company="EasyEvents">

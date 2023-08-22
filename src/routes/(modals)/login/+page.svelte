@@ -48,6 +48,7 @@
 						placeholder="Enter email..."
 						type="email"
 						required
+						invalid={!!errorMsg}
 						bind:value={email}
 					/>
 				</FormGroup>
@@ -57,6 +58,7 @@
 						labelText="Password"
 						placeholder="Enter password..."
 						required
+						invalid={!!errorMsg}
 						bind:value={password}
 					/>
 				</FormGroup>
