@@ -61,7 +61,7 @@
 		<Toolbar>
 			<ToolbarContent>
 				<ToolbarSearch />
-				<Button>Create Event</Button>
+				<Button href='/events/new'>Create Event</Button>
 			</ToolbarContent>
 		</Toolbar>
 		<svelte:fragment slot="cell" let:cell>
