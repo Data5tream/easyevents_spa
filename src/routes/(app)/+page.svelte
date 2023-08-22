@@ -44,12 +44,3 @@
 		</Column>
 	</Row>
 </Grid>
-
-<style>
-	h1 {
-		margin-bottom: 2rem;
-	}
-	h2 {
-		margin-bottom: 1rem;
-	}
-</style>
