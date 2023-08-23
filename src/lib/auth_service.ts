@@ -70,7 +70,8 @@ export const makeApiCall = async (url: string, config: RequestInit): Promise<Res
   const init = {
     ...config,
     headers: new Headers({
-      Authorization: `Bearer ${userVal.accessKey}`
+      Authorization: `Bearer ${userVal.accessKey}`,
+      'Content-Type': 'application/json'
     })
   };
 
