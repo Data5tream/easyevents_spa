@@ -11,6 +11,8 @@
     ToolbarSearch
   } from 'carbon-components-svelte';
   import { pageTitle } from '$lib/stores';
+  import { goto } from '$app/navigation';
+  import type { DataTableRow } from 'carbon-components-svelte/types/DataTable/DataTable.svelte';
 
   const title = 'Events';
   const description = 'Events that you have created';
@@ -49,6 +51,10 @@
     }
   ];
 
+  const toEvent = (row: DataTableRow) => {
+    goto(`/events/${row.detail.id}`);
+  };
+
   onMount(async () => {
     events = await loadEvents();
     loaded = true;
@@ -60,7 +66,7 @@
 {#if !events.length && !loaded}
   <DataTableSkeleton {headers} rows={10} />
 {:else}
-  <DataTable {title} {description} {headers} rows={events}>
+  <DataTable {title} {description} {headers} rows={events} on:click:row={toEvent}>
     <Toolbar>
       <ToolbarContent>
         <ToolbarSearch />

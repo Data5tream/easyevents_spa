@@ -27,6 +27,11 @@ export const loadEvents = async (): Promise<Array<ApiEvent>> => {
   return [];
 };
 
+export const loadEvent = async (id: number) => {
+  const res = await makeApiCall(`/api/event/${id}`, {});
+  return (await res.json()) as ApiEvent;
+};
+
 export const createEvent = async (data: BaseApiEvent): Promise<number | null> => {
   const res = await makeApiCall('/api/event/new', {
     method: 'post',
