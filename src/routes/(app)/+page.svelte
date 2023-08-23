@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { user } from '$lib/stores';
+  import { pageTitle, user } from '$lib/stores';
   import { Column, DataTable, Grid, Row, Tile } from 'carbon-components-svelte';
   import QuickStats from '$lib/components/QuickStats.svelte';
   import QuickLinks from '$lib/components/QuickLinks.svelte';
@@ -8,6 +8,8 @@
   user.subscribe((value) => {
     userValue = value;
   });
+
+  pageTitle.set('Dashboard');
 </script>
 
 <Grid noGutter>

@@ -10,6 +10,7 @@
     ToolbarContent,
     ToolbarSearch
   } from 'carbon-components-svelte';
+  import { pageTitle } from '$lib/stores';
 
   const title = 'Events';
   const description = 'Events that you have created';
@@ -52,6 +53,8 @@
     events = await loadEvents();
     loaded = true;
   });
+
+  pageTitle.set('Events');
 </script>
 
 {#if !events.length && !loaded}

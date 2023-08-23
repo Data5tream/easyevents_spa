@@ -2,10 +2,13 @@
   import { onMount } from 'svelte';
   import { logout } from '$lib/auth_service';
   import { Button, Column, Grid, Row, Tile } from 'carbon-components-svelte';
+  import { pageTitle } from '$lib/stores';
 
   onMount(() => {
     logout();
   });
+
+  pageTitle.set('Logout');
 </script>
 
 <Grid>

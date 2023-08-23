@@ -13,6 +13,7 @@
 
   import { login } from '$lib/auth_service';
   import { goto } from '$app/navigation';
+  import { pageTitle } from '$lib/stores';
 
   let email = '';
   let password = '';
@@ -30,6 +31,8 @@
       await goto('/');
     }
   };
+
+  pageTitle.set('Login');
 </script>
 
 <Grid>
