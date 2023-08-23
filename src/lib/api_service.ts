@@ -27,9 +27,13 @@ export const loadEvents = async (): Promise<Array<ApiEvent>> => {
   return [];
 };
 
-export const loadEvent = async (id: number) => {
+export const loadEvent = async (id: number): Promise<ApiEvent | null> => {
   const res = await makeApiCall(`/api/event/${id}`, {});
-  return (await res.json()) as ApiEvent;
+  if (res.status === 200) {
+    return (await res.json()) as ApiEvent;
+  }
+
+  return null;
 };
 
 export const createEvent = async (data: BaseApiEvent): Promise<number | null> => {

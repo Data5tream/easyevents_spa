@@ -3,6 +3,8 @@
   import { onMount } from 'svelte';
   import { loadEvents } from '$lib/api_service';
   import {
+    Breadcrumb,
+    BreadcrumbItem,
     Button,
     DataTable,
     DataTableSkeleton,
@@ -62,6 +64,11 @@
 
   pageTitle.set('Events');
 </script>
+
+<Breadcrumb noTrailingSlash style="margin-bottom: 1rem">
+  <BreadcrumbItem href="/">Dashboard</BreadcrumbItem>
+  <BreadcrumbItem href="/events" isCurrentPage>Events</BreadcrumbItem>
+</Breadcrumb>
 
 {#if !events.length && !loaded}
   <DataTableSkeleton {headers} rows={10} />
