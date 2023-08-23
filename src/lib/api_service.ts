@@ -1,8 +1,6 @@
 import { makeApiCall } from '$lib/auth_service';
 
-export interface ApiEvent {
-  id: number;
-  creator: string;
+interface BaseApiEvent {
   title: string;
   description: string;
   start_date: string;
@@ -10,6 +8,12 @@ export interface ApiEvent {
   signup_start: string;
   signup_end: string;
   max_participants: number;
+  require_confirmation: boolean;
+}
+
+export interface ApiEvent extends BaseApiEvent {
+  id: number;
+  creator: string;
 }
 
 export const loadEvents = async (): Promise<Array<ApiEvent>> => {
