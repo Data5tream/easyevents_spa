@@ -1,6 +1,8 @@
 <script lang="ts">
   import { TimePicker } from 'carbon-components-svelte';
 
+	export let value: string;
+
   const timePattern = '[0-2]?\\d:[0-5]\\d';
 
   const formatTime = (event: KeyboardEvent) => {
@@ -17,4 +19,4 @@
   };
 </script>
 
-<TimePicker {...$$props} on:keyup={formatTime} pattern={timePattern} />
+<TimePicker {...$$props} on:keyup={formatTime} bind:value pattern={timePattern} />
