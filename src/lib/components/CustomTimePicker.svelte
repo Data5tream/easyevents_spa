@@ -20,3 +20,9 @@
 </script>
 
 <TimePicker {...$$props} on:keyup={formatTime} bind:value pattern={timePattern} />
+
+<style>
+  :global(.bx--text-input--invalid) {
+    padding-right: unset;
+  }
+</style>
