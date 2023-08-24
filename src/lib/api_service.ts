@@ -36,7 +36,7 @@ export const loadEvents = async (): Promise<Array<ApiEvent>> => {
   return [];
 };
 
-export const loadEvent = async (id: number): Promise<ApiEvent | null> => {
+export const loadEvent = async (id: string): Promise<ApiEvent | null> => {
   const res = await makeApiCall(`/api/event/${id}`, {});
   if (res.status === 200) {
     return (await res.json()) as ApiEvent;
