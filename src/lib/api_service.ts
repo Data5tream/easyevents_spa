@@ -1,4 +1,5 @@
 import { makeApiCall } from '$lib/auth_service';
+import { user } from '$lib/stores';
 
 interface BaseApiEvent {
   title: string;
@@ -15,6 +16,14 @@ export interface ApiEvent extends BaseApiEvent {
   id: number;
   creator: string;
 }
+
+export const loadProfile = async () => {
+  const res = await makeApiCall('api/profile', {});
+  if (res.status === 200) {
+    const data = await res.json();
+    user.set(data);
+  }
+};
 
 export const loadEvents = async (): Promise<Array<ApiEvent>> => {
   const res = await makeApiCall(`/api/events`, {});

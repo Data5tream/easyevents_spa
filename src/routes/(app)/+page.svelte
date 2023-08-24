@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { pageTitle, user } from '$lib/stores';
+  import { pageTitle } from '$lib/stores';
   import { Column, DataTable, Grid, Row, Tile } from 'carbon-components-svelte';
   import QuickStats from '$lib/components/QuickStats.svelte';
   import QuickLinks from '$lib/components/QuickLinks.svelte';
-
-  let userValue;
-  user.subscribe((value) => {
-    userValue = value;
-  });
 
   pageTitle.set('Dashboard');
 </script>

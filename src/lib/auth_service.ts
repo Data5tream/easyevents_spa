@@ -1,5 +1,5 @@
 import { PUBLIC_API_HOST } from '$env/static/public';
-import { user } from '$lib/stores';
+import { keys } from '$lib/stores';
 import { goto } from '$app/navigation';
 
 export const login = async (username: string, password: string): Promise<{ status: number; detail?: string }> => {
@@ -22,7 +22,7 @@ export const login = async (username: string, password: string): Promise<{ statu
       refreshKey: data.refresh
     };
 
-    user.set(dataEle);
+    keys.set(dataEle);
     document.cookie = `keys=${encodeURIComponent(JSON.stringify(dataEle))};path='/';SameSite=Strict;Secure`;
 
     return { status };
@@ -34,7 +34,7 @@ export const login = async (username: string, password: string): Promise<{ statu
 };
 
 export const logout = () => {
-  user.set({ accessKey: '', refreshKey: '' });
+  keys.set({ accessKey: '', refreshKey: '' });
   document.cookie = 'keys=a;path="/";expires=Thu, 01 Jan 1970 00:00:01 GMT';
 };
 
@@ -46,7 +46,7 @@ export const refreshAccessToken = async (refresh: string) => {
   });
 
   if (res.status === 200) {
-    user.set({ accessKey: (await res.json()).access, refreshKey: refresh });
+    keys.set({ accessKey: (await res.json()).access, refreshKey: refresh });
     return true;
   }
 
@@ -54,30 +54,30 @@ export const refreshAccessToken = async (refresh: string) => {
 };
 
 export const makeApiCall = async (url: string, config: RequestInit): Promise<Response> => {
-  let userVal = {
+  let keysVal = {
     accessKey: '',
     refreshKey: ''
   };
 
-  user.subscribe((value) => {
-    userVal = value;
+  keys.subscribe((value) => {
+    keysVal = value;
   })();
 
-  if (!userVal.accessKey) {
+  if (!keysVal.accessKey) {
     await goto('/login');
   }
 
   const init = {
     ...config,
     headers: new Headers({
-      Authorization: `Bearer ${userVal.accessKey}`,
+      Authorization: `Bearer ${keysVal.accessKey}`,
       'Content-Type': 'application/json'
     })
   };
 
   const res = await fetch(`${PUBLIC_API_HOST}/${url}`, init);
   if (res.status === 401) {
-    if (await refreshAccessToken(userVal.refreshKey)) {
+    if (await refreshAccessToken(keysVal.refreshKey)) {
       return makeApiCall(url, config);
     } else {
       await goto('/login');

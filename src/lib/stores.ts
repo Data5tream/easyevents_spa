@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store';
 
-export const user = writable({ accessKey: '', refreshKey: '' });
+export const keys = writable({ accessKey: '', refreshKey: '' });
+
+export const user = writable({ username: '' });
 
 export const isMobile = writable(true);
 

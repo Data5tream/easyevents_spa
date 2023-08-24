@@ -14,7 +14,8 @@
     SkipToContent
   } from 'carbon-components-svelte';
   import { Dashboard, Events, EventSchedule, UserAvatarFilledAlt } from 'carbon-icons-svelte';
-  import { isMobile } from '$lib/stores';
+  import { isMobile, user } from '$lib/stores';
+  import { loadProfile } from '$lib/api_service';
 
   let isSideNavOpen = false;
   let isAccMenuOpen = false;
@@ -41,6 +42,8 @@
       href: ''
     }
   ];
+
+  loadProfile();
 </script>
 
 <Header company="EasyEvents" bind:isSideNavOpen>
@@ -50,6 +53,7 @@
   <HeaderUtilities>
     <HeaderAction bind:isOpen={isAccMenuOpen} icon={UserAvatarFilledAlt} closeIcon={UserAvatarFilledAlt}>
       <HeaderPanelLinks>
+        <HeaderPanelLink>{$user.username}</HeaderPanelLink>
         <HeaderPanelDivider>Account</HeaderPanelDivider>
         <HeaderPanelLink>Your Profile</HeaderPanelLink>
         <HeaderPanelLink>Account Settings</HeaderPanelLink>
