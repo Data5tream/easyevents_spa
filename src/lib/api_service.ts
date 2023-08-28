@@ -12,9 +12,17 @@ interface BaseApiEvent {
   require_confirmation: boolean;
 }
 
+export interface EventParticipant {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
 export interface ApiEvent extends BaseApiEvent {
   id: number;
   creator: string;
+  participants: Array<EventParticipant>;
 }
 
 export const loadProfile = async () => {

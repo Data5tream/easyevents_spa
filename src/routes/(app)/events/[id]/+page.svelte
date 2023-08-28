@@ -1,9 +1,11 @@
 <script lang="ts">
   import EventReview from '$lib/components/EventReview.svelte';
   import { Breadcrumb, BreadcrumbItem } from 'carbon-components-svelte';
+  import EventParticipants from '$lib/components/EventParticipants.svelte';
 
   export let data;
   const event = data.event;
+  const participants = data.event.participants;
 </script>
 
 <Breadcrumb noTrailingSlash style="margin-bottom: 1rem">
@@ -22,3 +24,4 @@
   signupStart={new Date(Date.parse(event.signup_start))}
   signupEnd={new Date(Date.parse(event.signup_end))}
 />
+<EventParticipants {participants} max_participants={event.max_participants} />
