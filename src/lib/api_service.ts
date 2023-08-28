@@ -29,6 +29,7 @@ export interface EventUpdate {
   id: number;
   event: BaseApiEvent;
   event_type: string;
+  timestamp: Date;
   user: EventParticipant;
 }
 

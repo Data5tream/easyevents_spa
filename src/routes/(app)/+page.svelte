@@ -10,7 +10,8 @@
   let updates: Array<EventUpdate>;
   $: updates = data.data.updates.map((upd) => ({
     ...upd,
-    name: `${upd.user.first_name} ${upd.user.last_name}`
+    name: `${upd.user.first_name} ${upd.user.last_name}`,
+    id: `${upd.user.email}-${upd.timestamp}`
   }));
 
   pageTitle.set('Dashboard');
