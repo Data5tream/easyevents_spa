@@ -1,14 +1,13 @@
 <script lang="ts">
   import { Tile } from 'carbon-components-svelte';
 
-  const stats = [
+  export let events: number;
+
+  let stats: Array<{ title: string; count: number }>;
+  $: stats = [
     {
       title: 'Events',
-      count: 10
-    },
-    {
-      title: 'Participants',
-      count: 910
+      count: events
     }
   ];
 </script>
