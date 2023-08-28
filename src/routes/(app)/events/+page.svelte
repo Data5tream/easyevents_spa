@@ -84,7 +84,11 @@
       {#if ['start_date', 'end_date', 'signup_start', 'signup_end'].includes(cell.key)}
         {new Date(cell.value).toLocaleString()}
       {:else if cell.key === 'participants'}
-        {cell.value.length} / {row.max_participants}
+        {#if cell.value.length === row.max_participants}
+          <span style='color: #00a5a5; font-weight: bold'>Full</span> ({row.max_participants})
+        {:else}
+          {cell.value.length} / {row.max_participants}
+        {/if}
       {:else}
         {cell.value}
       {/if}
