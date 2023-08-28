@@ -80,9 +80,11 @@
         <Button href="/events/new">Create Event</Button>
       </ToolbarContent>
     </Toolbar>
-    <svelte:fragment slot="cell" let:cell>
+    <svelte:fragment slot="cell" let:cell let:row>
       {#if ['start_date', 'end_date', 'signup_start', 'signup_end'].includes(cell.key)}
         {new Date(cell.value).toLocaleString()}
+      {:else if cell.key === 'participants'}
+        {Number(cell.value)} / {row.max_participants}
       {:else}
         {cell.value}
       {/if}
