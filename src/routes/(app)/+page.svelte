@@ -8,7 +8,7 @@
   export let data;
 
   let updates: Array<EventUpdate>;
-  $: updates = data.data.updates.map((upd) => ({
+  $: updates = data.data.updates.map((upd: EventUpdate) => ({
     ...upd,
     name: `${upd.user.first_name} ${upd.user.last_name}`,
     id: `${upd.user.email}-${upd.timestamp}`
@@ -47,8 +47,8 @@
             <a href="events/{row.event.id}">{cell.value}</a>
           {:else if cell.key === 'event_type'}
             {#if cell.value === 'joined'}
-              <span class='success'>Joined</span>
-            {:else }
+              <span class="success">Joined</span>
+            {:else}
               {cell.value}
             {/if}
           {:else}

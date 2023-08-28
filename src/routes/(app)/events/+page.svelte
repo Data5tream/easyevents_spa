@@ -85,7 +85,7 @@
         {new Date(cell.value).toLocaleString()}
       {:else if cell.key === 'participants'}
         {#if cell.value.length === row.max_participants}
-          <span class='success'>Full</span> ({row.max_participants})
+          <span class="success">Full</span> ({row.max_participants})
         {:else}
           {cell.value.length} / {row.max_participants}
         {/if}
