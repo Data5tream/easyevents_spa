@@ -84,7 +84,7 @@
       {#if ['start_date', 'end_date', 'signup_start', 'signup_end'].includes(cell.key)}
         {new Date(cell.value).toLocaleString()}
       {:else if cell.key === 'participants'}
-        {Number(cell.value)} / {row.max_participants}
+        {cell.value.length} / {row.max_participants}
       {:else}
         {cell.value}
       {/if}
