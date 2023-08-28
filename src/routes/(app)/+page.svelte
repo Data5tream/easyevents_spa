@@ -45,6 +45,12 @@
             {new Date(cell.value).toLocaleString()}
           {:else if cell.key === 'event.title'}
             <a href="events/{row.event.id}">{cell.value}</a>
+          {:else if cell.key === 'event_type'}
+            {#if cell.value === 'joined'}
+              <span class='success'>Joined</span>
+            {:else }
+              {cell.value}
+            {/if}
           {:else}
             {cell.value}
           {/if}
@@ -53,3 +59,9 @@
     </Column>
   </Row>
 </Grid>
+
+<style>
+  .success {
+    color: var(--c-success);
+  }
+</style>
