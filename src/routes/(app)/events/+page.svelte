@@ -85,7 +85,7 @@
         {new Date(cell.value).toLocaleString()}
       {:else if cell.key === 'participants'}
         {#if cell.value.length === row.max_participants}
-          <span style='color: #00a5a5; font-weight: bold'>Full</span> ({row.max_participants})
+          <span class='success'>Full</span> ({row.max_participants})
         {:else}
           {cell.value.length} / {row.max_participants}
         {/if}
@@ -95,3 +95,10 @@
     </svelte:fragment>
   </DataTable>
 {/if}
+
+<style>
+  .success {
+    color: var(--c-success);
+    font-weight: bold;
+  }
+</style>

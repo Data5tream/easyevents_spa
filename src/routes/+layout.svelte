@@ -14,6 +14,11 @@
 
 <svelte:head>
   <title>{title}</title>
+  <style>
+    :root {
+      --c-success: #00a5a5;
+    }
+  </style>
 </svelte:head>
 
 <slot />
