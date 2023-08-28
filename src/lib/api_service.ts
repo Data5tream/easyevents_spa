@@ -25,12 +25,33 @@ export interface ApiEvent extends BaseApiEvent {
   participants: Array<EventParticipant>;
 }
 
+export interface EventUpdate {
+  id: number;
+  event: BaseApiEvent;
+  event_type: string;
+  user: EventParticipant;
+}
+
+export interface DashboardData {
+  events: Array<BaseApiEvent>;
+  updates: Array<EventUpdate>;
+}
+
 export const loadProfile = async () => {
   const res = await makeApiCall('api/profile', {});
   if (res.status === 200) {
     const data = await res.json();
     user.set(data);
   }
+};
+
+export const loadDashboard = async (): Promise<DashboardData | null> => {
+  const res = await makeApiCall('api/dashboard', {});
+  if (res.status === 200) {
+    return (await res.json()) as DashboardData;
+  }
+
+  return null;
 };
 
 export const loadEvents = async (): Promise<Array<ApiEvent>> => {

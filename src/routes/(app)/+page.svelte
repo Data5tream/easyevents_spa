@@ -1,8 +1,17 @@
 <script lang="ts">
   import { pageTitle } from '$lib/stores';
-  import { Column, DataTable, Grid, Row, Tile } from 'carbon-components-svelte';
+  import { Column, DataTable, Grid, Row } from 'carbon-components-svelte';
   import QuickStats from '$lib/components/QuickStats.svelte';
   import QuickLinks from '$lib/components/QuickLinks.svelte';
+  import type { EventUpdate } from '$lib/api_service';
+
+  export let data;
+
+  let updates: Array<EventUpdate>;
+  $: updates = data.data.updates.map((upd) => ({
+    ...upd,
+    name: `${upd.user.first_name} ${upd.user.last_name}`
+  }));
 
   pageTitle.set('Dashboard');
 </script>
@@ -16,28 +25,30 @@
   <Row>
     <Column md={4}>
       <QuickLinks />
-      <QuickStats />
+      <QuickStats events={data.data.events.length} />
     </Column>
     <Column md={4}>
-      <Tile>
-        <h2>Updates</h2>
-        <DataTable
-          headers={[
-            { key: 'name', value: 'Name' },
-            { key: 'event', value: 'Event' },
-            { key: 'acc', value: 'Action' }
-          ]}
-          rows={[
-            { id: 1, name: 'Alice', event: 'Test Event', acc: 'joined' },
-            { id: 2, name: 'Bob', event: 'Test Event', acc: 'joined' },
-            { id: 3, name: 'Charlie', event: 'Test Event', acc: 'joined' },
-            { id: 4, name: 'Bob', event: 'Test Event 2', acc: 'left' },
-            { id: 5, name: 'Charlie', event: 'Test Event 3', acc: 'joined' },
-            { id: 6, name: 'Alice', event: 'Test Event 4', acc: 'left' },
-            { id: 7, name: 'Alice', event: 'Test Event 5', acc: 'joined' }
-          ]}
-        />
-      </Tile>
+      <DataTable
+        title="Updates"
+        description="Updates related to events you have created."
+        headers={[
+          { key: 'name', value: 'Name' },
+          { key: 'event.title', value: 'Event' },
+          { key: 'event_type', value: 'Action' },
+          { key: 'timestamp', value: 'Timestamp' }
+        ]}
+        rows={updates}
+      >
+        <svelte:fragment slot="cell" let:cell let:row>
+          {#if cell.key === 'timestamp'}
+            {new Date(cell.value).toLocaleString()}
+          {:else if cell.key === 'event.title'}
+            <a href="events/{row.event.id}">{cell.value}</a>
+          {:else}
+            {cell.value}
+          {/if}
+        </svelte:fragment>
+      </DataTable>
     </Column>
   </Row>
 </Grid>
