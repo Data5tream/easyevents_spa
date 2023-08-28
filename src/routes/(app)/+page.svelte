@@ -31,7 +31,7 @@
     <Column md={4}>
       <DataTable
         title="Updates"
-        description="Updates related to events you have created."
+        description="The latest updates related to events you have created"
         headers={[
           { key: 'name', value: 'Name' },
           { key: 'event.title', value: 'Event' },
