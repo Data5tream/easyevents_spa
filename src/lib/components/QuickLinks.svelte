@@ -9,7 +9,7 @@
       <Column md={4}>
         <ClickableTile class="link-card events" href="/events">
           <h2>Events</h2>
-          <p>Edit the events you have created.</p>
+          <p>Edit the events you have created</p>
           <div class="arrow">
             <ArrowRight size={24} />
           </div>
@@ -18,7 +18,7 @@
       <Column md={4}>
         <Tile class="link-card participants">
           <h2>Participants</h2>
-          <p>See a list of all participants you have gathered so far.</p>
+          <p>See a list of all participants you have gathered so far</p>
         </Tile>
       </Column>
     </Row>
