@@ -85,3 +85,15 @@ export const createEvent = async (data: BaseApiEvent): Promise<number | null> =>
   }
   return null;
 };
+
+export const changePassword = async (old_password: string, new_password1: string, new_password2: string) => {
+  const res = await makeApiCall('/api/account/change_password', {
+    method: 'post',
+    body: JSON.stringify({ old_password, new_password1, new_password2 })
+  });
+  if (res.status === 204) {
+    return 'success';
+  }
+
+  return res.text();
+};
