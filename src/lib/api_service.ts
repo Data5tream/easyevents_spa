@@ -97,3 +97,11 @@ export const changePassword = async (old_password: string, new_password1: string
 
   return res.text();
 };
+
+export const updateAccountDetails = async (first_name: string, last_name: string) => {
+  const res = await makeApiCall('/api/account/details', {
+    method: 'post',
+    body: JSON.stringify({ first_name, last_name })
+  });
+  return res.status === 204;
+};

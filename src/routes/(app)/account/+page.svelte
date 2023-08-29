@@ -1,18 +1,8 @@
 <script lang="ts">
-  import { pageTitle, user } from '$lib/stores';
-  import {
-    Breadcrumb,
-    BreadcrumbItem,
-    Button,
-    Column,
-    Form,
-    FormGroup,
-    Grid,
-    Row,
-    TextInput,
-    Tile
-  } from 'carbon-components-svelte';
+  import { pageTitle } from '$lib/stores';
+  import { Breadcrumb, BreadcrumbItem, Column, Grid, Row } from 'carbon-components-svelte';
   import ChangePassword from '$lib/components/ChangePassword.svelte';
+  import ChangeAccountDetails from '$lib/components/ChangeAccountDetails.svelte';
 
   pageTitle.set('Account');
 </script>
@@ -27,24 +17,7 @@
 <Grid noGutter>
   <Row>
     <Column>
-      <Tile>
-        <h2>Account details</h2>
-        <Form>
-          <FormGroup>
-            <TextInput
-              readonly
-              labelText="Email"
-              helperText="Your email address can not be changed currently"
-              value={$user.email}
-            />
-          </FormGroup>
-          <FormGroup>
-            <TextInput labelText="First name" value={$user.first_name} />
-            <TextInput labelText="Last name" value={$user.last_name} />
-          </FormGroup>
-          <Button type="submit">Change account details</Button>
-        </Form>
-      </Tile>
+      <ChangeAccountDetails />
     </Column>
     <Column>
       <ChangePassword />
