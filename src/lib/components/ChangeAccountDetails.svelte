@@ -2,23 +2,29 @@
   import { user } from '$lib/stores';
   import { loadProfile, updateAccountDetails } from '$lib/api_service';
 
-  import { Button, Form, FormGroup, InlineNotification, TextInput, Tile } from 'carbon-components-svelte';
+  import { Button, Form, FormGroup, InlineNotification, Loading, TextInput, Tile } from 'carbon-components-svelte';
 
   let first_name = $user.first_name;
   let last_name = $user.last_name;
 
   let sent = false;
   let success = false;
+  let loading = false;
 
   const submit = async () => {
+    loading = true;
     success = await updateAccountDetails(first_name, last_name);
     sent = true;
 
     if (success) {
       await loadProfile();
     }
+
+    loading = false;
   };
 </script>
+
+<Loading active={loading} />
 
 <Tile>
   <h2>Account details</h2>

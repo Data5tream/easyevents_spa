@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Form, FormGroup, InlineNotification, PasswordInput, Tile } from 'carbon-components-svelte';
+  import { Button, Form, FormGroup, InlineNotification, Loading, PasswordInput, Tile } from 'carbon-components-svelte';
   import { changePassword } from '$lib/api_service';
 
   let old_password: string;
@@ -27,10 +27,13 @@
   let repeat_password_invalid = false;
   $: repeat_password_invalid = new_password0 !== new_password1;
 
+  let loading = false;
   let successful = false;
   let has_error = false;
 
   const submit = async () => {
+    loading = true;
+
     const result = await changePassword(old_password, new_password0, new_password1);
     if (result === 'success') {
       successful = true;
@@ -42,8 +45,12 @@
       successful = false;
       has_error = true;
     }
+
+    loading = false;
   };
 </script>
+
+<Loading active={loading} />
 
 <Tile>
   <h2>Change password</h2>
