@@ -1,6 +1,6 @@
 <script lang="ts">
   import { user } from '$lib/stores';
-  import { updateAccountDetails } from '$lib/api_service';
+  import { loadProfile, updateAccountDetails } from '$lib/api_service';
 
   import { Button, Form, FormGroup, InlineNotification, TextInput, Tile } from 'carbon-components-svelte';
 
@@ -13,6 +13,10 @@
   const submit = async () => {
     success = await updateAccountDetails(first_name, last_name);
     sent = true;
+
+    if (success) {
+      await loadProfile();
+    }
   };
 </script>
 
