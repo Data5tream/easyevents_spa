@@ -41,7 +41,9 @@
       <TextInput labelText="First name" required bind:value={first_name} />
       <TextInput labelText="Last name" required bind:value={last_name} />
     </FormGroup>
-    <Button type="submit">Change account details</Button>
+    <Button type="submit" disabled={first_name === $user.first_name && last_name === $user.last_name}>
+      Change account details
+    </Button>
   </Form>
 </Tile>
 
