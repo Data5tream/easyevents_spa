@@ -53,7 +53,7 @@
   <HeaderUtilities>
     <HeaderAction bind:isOpen={isAccMenuOpen} icon={UserAvatarFilledAlt} closeIcon={UserAvatarFilledAlt}>
       <HeaderPanelLinks>
-        <HeaderPanelLink>{$user.username}</HeaderPanelLink>
+        <HeaderPanelLink>{$user.first_name} {$user.last_name} ({$user.email})</HeaderPanelLink>
         <HeaderPanelDivider>Account</HeaderPanelDivider>
         <HeaderPanelLink>Your Profile</HeaderPanelLink>
         <HeaderPanelLink>Account Settings</HeaderPanelLink>
