@@ -67,6 +67,7 @@
           <Select labelText="Signup theme" bind:selected={theme}>
             <SelectItem value="signup/form_base.html" text="Simple (default)" />
             <SelectItem value="signup/form_dark.html" text="Dark" />
+            <SelectItem value="signup/form_mild.html" text="Mild" />
           </Select>
         </FormGroup>
         <Button type="submit">Save changes</Button>

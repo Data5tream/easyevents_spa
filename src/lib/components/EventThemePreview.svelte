@@ -39,12 +39,31 @@
   .theme-preview {
     border: 2px solid #333;
     padding: 1rem;
-    background: #fff;
-    color: #000;
+    background: var(--background-color);
+    color: var(--text-color);
+    --text-color: #000;
+    --background-color: #fff;
   }
   .theme-preview.dark {
-    background: rgb(24 24 27);
-    color: #fff;
+    --background-color: rgb(24 24 27);
+    --text-color: #fff;
+  }
+  .theme-preview.mild {
+    --background-color: #fffff5;
+    --heading-color: #966933;
+  }
+  .theme-preview.mild .form-input,
+  .theme-preview.mild .form-button {
+    border-radius: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--heading-color, var(--text-color));
   }
 
   h1,
