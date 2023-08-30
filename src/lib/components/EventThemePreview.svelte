@@ -36,6 +36,7 @@
     <button class="form-button">Sign up</button>
   </div>
 </div>
+<FormLabel>This is just a demo. Styles can vary slightly</FormLabel>
 
 <style>
   .theme-preview {
