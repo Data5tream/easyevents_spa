@@ -162,10 +162,10 @@
           </FormGroup>
           <FormGroup>
             <TextInput
-              type='url'
-              labelText='Details URL'
-              helperText='Link to the page where users can find more information about your event'
-              placeholder='https://example.com/your_event'
+              type="url"
+              labelText="Details URL"
+              helperText="Link to the page where users can find more information about your event"
+              placeholder="https://example.com/your_event"
               bind:value={details_url}
             />
           </FormGroup>
