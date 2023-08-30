@@ -3,7 +3,7 @@
 
   export let title: string;
   export let description: string;
-	export let link: string;
+  export let link: string;
   export let theme: string;
 
   let theme_class = '';
