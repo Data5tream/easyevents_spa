@@ -4,6 +4,7 @@ import { user } from '$lib/stores';
 interface BaseApiEvent {
   title: string;
   description: string;
+  details_url: string;
   start_date: string;
   end_date: string;
   signup_start: string;

@@ -4,8 +4,9 @@
 
   export let title: string;
   export let description: string;
-  export let maxParticipants: number;
-  export let requireConfirmation: boolean;
+  export let details_url: string;
+  export let max_participants: number;
+  export let require_confirmation: boolean;
   export let signupStart: Date;
   export let signupEnd: Date;
   export let eventStart: Date;
@@ -57,8 +58,11 @@
         <h3>Description</h3>
         <p>{description}</p>
         <hr />
-        <p>Max participants: <strong>{maxParticipants}</strong></p>
-        <p>Require confirmation: <strong>{requireConfirmation ? 'Yes' : 'No'}</strong></p>
+        <p>Max participants: <strong>{max_participants}</strong></p>
+        <p>Require confirmation: <strong>{require_confirmation ? 'Yes' : 'No'}</strong></p>
+        {#if details_url}
+          <p>Details URL: <strong>{details_url}</strong></p>
+        {/if}
       </Tile>
     </Column>
     <Column lg={8}>

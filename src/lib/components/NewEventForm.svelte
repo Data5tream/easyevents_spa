@@ -33,6 +33,7 @@
 
   let title = '';
   let description = '';
+  let details_url = '';
 
   let maxParticipants = 8;
   let requireConfirmation = true;
@@ -96,6 +97,7 @@
     const id = await createEvent({
       title,
       description,
+      details_url,
       max_participants: maxParticipants,
       require_confirmation: requireConfirmation,
       start_date: eventStart.toISOString(),
@@ -156,6 +158,15 @@
               maxCount={512}
               invalid={invalidDescription}
               invalidText="The description must be between 16 and 512 characters"
+            />
+          </FormGroup>
+          <FormGroup>
+            <TextInput
+              type='url'
+              labelText='Details URL'
+              helperText='Link to the page where users can find more information about your event'
+              placeholder='https://example.com/your_event'
+              bind:value={details_url}
             />
           </FormGroup>
           <Button type="submit">Next</Button>
@@ -242,8 +253,9 @@
         <EventReview
           {title}
           {description}
-          {maxParticipants}
-          {requireConfirmation}
+          {details_url}
+          max_participants={maxParticipants}
+          require_confirmation={requireConfirmation}
           {signupStart}
           {signupEnd}
           {eventStart}
