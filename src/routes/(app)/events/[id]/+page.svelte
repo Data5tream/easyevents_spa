@@ -1,11 +1,24 @@
 <script lang="ts">
   import EventReview from '$lib/components/EventReview.svelte';
-  import { Breadcrumb, BreadcrumbItem, Column, Grid, Row, Tab, TabContent, Tabs, Tile } from 'carbon-components-svelte';
+  import {
+    Breadcrumb,
+    BreadcrumbItem,
+    Column,
+    Grid,
+    Link,
+    Row,
+    Tab,
+    TabContent,
+    Tabs,
+    Tile
+  } from 'carbon-components-svelte';
+  import { Launch } from 'carbon-icons-svelte';
   import EventParticipants from '$lib/components/EventParticipants.svelte';
   import { PUBLIC_API_HOST } from '$env/static/public';
   import EventSettings from '$lib/components/EventSettings.svelte';
   import { pageTitle } from '$lib/stores';
   import { loadEvent } from '$lib/api_service';
+
 
   export let data;
   let event = data.event;
@@ -55,7 +68,7 @@
           <Column noGutter>
             <Tile>
               <h3>Invite link</h3>
-              <p><a href={event_link} target="_blank" rel="noreferrer">{event_link}</a></p>
+              <p><Link icon={Launch} href={event_link} target="_blank" rel="noreferrer">{event_link}</Link></p>
             </Tile>
           </Column>
         </Row>

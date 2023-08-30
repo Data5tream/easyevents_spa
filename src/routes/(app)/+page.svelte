@@ -1,6 +1,7 @@
 <script lang="ts">
   import { pageTitle } from '$lib/stores';
-  import { Column, DataTable, Grid, Row } from 'carbon-components-svelte';
+  import { Column, DataTable, Grid, Link, Row } from 'carbon-components-svelte';
+  import { Launch } from 'carbon-icons-svelte';
   import QuickStats from '$lib/components/QuickStats.svelte';
   import QuickLinks from '$lib/components/QuickLinks.svelte';
   import type { EventUpdate } from '$lib/api_service';
@@ -44,7 +45,7 @@
           {#if cell.key === 'timestamp'}
             {new Date(cell.value).toLocaleString()}
           {:else if cell.key === 'event.title'}
-            <a href="events/{row.event.id}">{cell.value}</a>
+            <Link icon={Launch} href="events/{row.event.id}">{cell.value}</Link>
           {:else if cell.key === 'event_type'}
             {#if cell.value === 'joined'}
               <span class="success">Joined</span>
