@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DataTable } from 'carbon-components-svelte';
+  import { DataTable, Tile } from 'carbon-components-svelte';
   import type { EventUpdate } from '$lib/api_service.js';
 
   export let ev_updates: Array<EventUpdate>;
@@ -13,6 +13,7 @@
   }));
 </script>
 
+{#if updates.length}
 <DataTable
   title="Event Updates"
   description="User updates related to this event"
@@ -37,6 +38,14 @@
     {/if}
   </svelte:fragment>
 </DataTable>
+{:else}
+  <Tile>
+    <h4>No updates yet</h4>
+    <p class='bx--data-table-header__description'>
+      There are no updates for this event yet. Once users join the event, a table will appear here
+    </p>
+  </Tile>
+{/if}
 
 <style>
   .success {
