@@ -13,8 +13,11 @@
   const event_link = `${PUBLIC_API_HOST}/signup/${event.id}/${encodeURIComponent(event.title)}`;
 
   const refreshEvent = async () => {
-    event = await loadEvent(event.id);
-    participants = event.participants;
+    const res = await loadEvent(event.id.toString());
+    if (res) {
+      event = res;
+      participants = event.participants;
+    }
   };
 
   pageTitle.set(`${event.title} - Event Details`);
@@ -62,7 +65,12 @@
       <Grid noGutter>
         <Row>
           <Column noGutter>
-            <EventParticipants {participants} max_participants={event.max_participants} />
+            <EventParticipants
+              eventId={event.id}
+              {participants}
+              max_participants={event.max_participants}
+              on:update={refreshEvent}
+            />
           </Column>
         </Row>
       </Grid>
