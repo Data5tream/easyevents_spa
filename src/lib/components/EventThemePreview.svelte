@@ -1,5 +1,6 @@
 <script lang="ts">
   import { user } from '$lib/stores';
+  import { FormLabel } from 'carbon-components-svelte';
 
   export let title: string;
   export let description: string;
@@ -10,6 +11,7 @@
   $: theme_class = theme.substring(12, theme.length - 5);
 </script>
 
+<FormLabel>Preview</FormLabel>
 <div class="theme-preview {theme_class}">
   <h1 class="title">{title}</h1>
   <h2>by {$user.first_name} {$user.last_name}</h2>
