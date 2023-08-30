@@ -23,17 +23,17 @@
     <h3>Signup now</h3>
     <p>Do you have an account with Easy Events? Log in now!</p>
     <h4>Log into existing account</h4>
-    <input type="email" class="form-input" name="username" placeholder="Your email" />
-    <input type="password" class="form-input" name="password" placeholder="Your password" />
-    <button class="form-button"> Login </button>
+    <input type="email" class="form-input" placeholder="Your email" />
+    <input type="password" class="form-input" placeholder="Your password" />
+    <button class="form-button">Login</button>
     <div class="separator">or</div>
     <h4>Create a new account</h4>
-    <input type="text" class="form-input" name="first_name" placeholder="Your first name" />
-    <input type="text" class="form-input" name="last_name" placeholder="Your last name" />
-    <input type="email" class="form-input" name="email" placeholder="Your email" />
-    <input type="password" class="form-input" name="password0" placeholder="Your password" />
-    <input type="password" class="form-input" name="password1" placeholder="Repeat password" />
-    <button class="form-button"> Sign up </button>
+    <input type="text" class="form-input" placeholder="Your first name" />
+    <input type="text" class="form-input" placeholder="Your last name" />
+    <input type="email" class="form-input" placeholder="Your email" />
+    <input type="password" class="form-input" placeholder="Your password" />
+    <input type="password" class="form-input" placeholder="Repeat password" />
+    <button class="form-button">Sign up</button>
   </div>
 </div>
 
