@@ -49,7 +49,7 @@
             {#if cell.value === 'joined'}
               <span class="success">Joined</span>
             {:else if cell.value === 'kicked'}
-              <span class='danger'>Kicked</span>
+              <span class="danger">Kicked</span>
             {:else}
               {cell.value}
             {/if}
