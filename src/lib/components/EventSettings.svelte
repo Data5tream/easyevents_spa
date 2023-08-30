@@ -73,7 +73,7 @@
       </Form>
     </Column>
     <Column lg={8}>
-      <EventThemePreview {title} {description} {theme} />
+      <EventThemePreview {title} {description} {theme} link={details_url} />
     </Column>
   </Row>
 </Grid>

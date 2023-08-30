@@ -3,6 +3,7 @@
 
   export let title: string;
   export let description: string;
+	export let link: string;
   export let theme: string;
 
   let theme_class = '';
@@ -13,7 +14,7 @@
   <h1 class="title">{title}</h1>
   <h2>by {$user.first_name} {$user.last_name}</h2>
   <p>{description}</p>
-  <p class="link-text">For more details please visit: <span class="link">https://example.com/event_link</span></p>
+  <p class="link-text">For more details please visit: <span class="link">{link}</span></p>
   <hr />
   <div class="seats">Available seats: 123</div>
   <div class="signup-form">
