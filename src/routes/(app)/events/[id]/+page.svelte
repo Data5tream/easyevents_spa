@@ -5,11 +5,17 @@
   import { PUBLIC_API_HOST } from '$env/static/public';
   import EventSettings from '$lib/components/EventSettings.svelte';
   import { pageTitle } from '$lib/stores';
+  import { loadEvent } from '$lib/api_service';
 
   export let data;
-  const event = data.event;
-  const participants = data.event.participants;
+  let event = data.event;
+  let participants = data.event.participants;
   const event_link = `${PUBLIC_API_HOST}/signup/${event.id}/${encodeURIComponent(event.title)}`;
+
+  const refreshEvent = async () => {
+    event = await loadEvent(event.id);
+    participants = event.participants;
+  };
 
   pageTitle.set(`${event.title} - Event Details`);
 </script>
@@ -62,7 +68,7 @@
       </Grid>
     </TabContent>
     <TabContent>
-      <EventSettings {event} />
+      <EventSettings {event} on:update={refreshEvent} />
     </TabContent>
   </svelte:fragment>
 </Tabs>

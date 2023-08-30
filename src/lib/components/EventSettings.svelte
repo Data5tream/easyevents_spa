@@ -16,6 +16,9 @@
     TextInput
   } from 'carbon-components-svelte';
   import EventThemePreview from '$lib/components/EventThemePreview.svelte';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
   export let event: ApiEvent;
 
@@ -37,6 +40,10 @@
     successful = await updateEventDetails(event.id, title, description, theme, details_url);
     submitted = true;
     loading = false;
+
+    if (successful) {
+      dispatch('update');
+    }
   };
 </script>
 
