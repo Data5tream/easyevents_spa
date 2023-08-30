@@ -139,7 +139,7 @@
           <FormGroup>
             <TextInput
               labelText="Title"
-              helperText="This title will be shown to users when they visit the signup form."
+              helperText="This title will be shown to users when they visit the signup form"
               placeholder="Enter the title for the event..."
               bind:value={title}
               maxlength={128}
@@ -151,7 +151,7 @@
           <FormGroup>
             <TextArea
               labelText="Description"
-              helperText="A short description that will be shown together with the title."
+              helperText="A short description that will be shown together with the title"
               placeholder="Enter a short description..."
               bind:value={description}
               required
