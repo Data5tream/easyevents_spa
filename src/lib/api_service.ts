@@ -25,6 +25,7 @@ export interface ApiEvent extends BaseApiEvent {
   creator: string;
   template: string;
   participants: Array<EventParticipant>;
+  updates: Array<EventUpdate>;
 }
 
 export interface EventUpdate {

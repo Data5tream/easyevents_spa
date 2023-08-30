@@ -18,7 +18,7 @@
   import EventSettings from '$lib/components/EventSettings.svelte';
   import { pageTitle } from '$lib/stores';
   import { loadEvent } from '$lib/api_service';
-
+  import EventUpdateTable from '$lib/components/EventUpdateTable.svelte';
 
   export let data;
   let event = data.event;
@@ -70,6 +70,11 @@
               <h3>Invite link</h3>
               <p><Link icon={Launch} href={event_link} target="_blank" rel="noreferrer">{event_link}</Link></p>
             </Tile>
+          </Column>
+        </Row>
+        <Row>
+          <Column noGutter>
+            <EventUpdateTable ev_updates={event.updates} />
           </Column>
         </Row>
       </Grid>
