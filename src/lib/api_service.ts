@@ -107,3 +107,18 @@ export const updateAccountDetails = async (first_name: string, last_name: string
   });
   return res.status === 204;
 };
+
+export const updateEventDetails = async (
+  id: number,
+  title: string,
+  description: string,
+  template: string,
+  details_url = ''
+) => {
+  const res = await makeApiCall(`/api/event/${id}`, {
+    method: 'put',
+    body: JSON.stringify({ title, description, template, details_url })
+  });
+
+  return res.status === 200;
+};

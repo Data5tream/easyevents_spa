@@ -4,11 +4,14 @@
   import EventParticipants from '$lib/components/EventParticipants.svelte';
   import { PUBLIC_API_HOST } from '$env/static/public';
   import EventSettings from '$lib/components/EventSettings.svelte';
+  import { pageTitle } from '$lib/stores';
 
   export let data;
   const event = data.event;
   const participants = data.event.participants;
   const event_link = `${PUBLIC_API_HOST}/signup/${event.id}/${encodeURIComponent(event.title)}`;
+
+  pageTitle.set(`${event.title} - Event Details`);
 </script>
 
 <Breadcrumb noTrailingSlash style="margin-bottom: 1rem">

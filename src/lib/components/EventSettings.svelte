@@ -1,11 +1,14 @@
 <script lang="ts">
   import type { ApiEvent } from '$lib/api_service';
+  import { updateEventDetails } from '$lib/api_service';
   import {
     Button,
     Column,
     Form,
     FormGroup,
     Grid,
+    InlineNotification,
+    Loading,
     Row,
     Select,
     SelectItem,
@@ -24,12 +27,24 @@
 
   let invalidTitle = false;
   let invalidDescription = false;
+
+  let submitted = false;
+  let successful = false;
+  let loading = false;
+
+  const submit = async () => {
+    loading = true;
+    successful = await updateEventDetails(event.id, title, description, theme, details_url);
+    submitted = true;
+    loading = false;
+  };
 </script>
 
+<Loading active={loading} />
 <Grid noGutter>
   <Row>
     <Column lg={8} noGutter>
-      <Form>
+      <Form on:submit={submit}>
         <FormGroup>
           <TextInput
             labelText="Title"
@@ -71,6 +86,13 @@
           </Select>
         </FormGroup>
         <Button type="submit">Save changes</Button>
+        {#if submitted}
+          {#if successful}
+            <InlineNotification kind="success" title="Success:" subtitle="Event details updated" />
+          {:else}
+            <InlineNotification kind="error" title="Error:" subtitle="Changes have not been saved" />
+          {/if}
+        {/if}
       </Form>
     </Column>
     <Column lg={8}>
