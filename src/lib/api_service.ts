@@ -23,6 +23,7 @@ export interface EventParticipant {
 export interface ApiEvent extends BaseApiEvent {
   id: number;
   creator: string;
+  template: string;
   participants: Array<EventParticipant>;
 }
 
