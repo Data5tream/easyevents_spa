@@ -17,6 +17,7 @@
   <style>
     :root {
       --c-success: #00a5a5;
+      --c-danger: #d90000;
     }
   </style>
 </svelte:head>

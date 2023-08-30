@@ -48,6 +48,8 @@
           {:else if cell.key === 'event_type'}
             {#if cell.value === 'joined'}
               <span class="success">Joined</span>
+            {:else if cell.value === 'kicked'}
+              <span class='danger'>Kicked</span>
             {:else}
               {cell.value}
             {/if}
@@ -63,5 +65,8 @@
 <style>
   .success {
     color: var(--c-success);
+  }
+  .danger {
+    color: var(--c-danger);
   }
 </style>
