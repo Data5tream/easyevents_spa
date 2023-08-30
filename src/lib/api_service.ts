@@ -122,3 +122,12 @@ export const updateEventDetails = async (
 
   return res.status === 200;
 };
+
+export const removeEventParticipants = async (id: number, participants: Array<number>) => {
+  const res = await makeApiCall(`/api/event/${id}/participants`, {
+    method: 'delete',
+    body: JSON.stringify({ participants })
+  });
+
+  return res.status === 200;
+};
