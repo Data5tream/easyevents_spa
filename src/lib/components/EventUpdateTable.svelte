@@ -30,6 +30,8 @@
         <span class="success">Joined</span>
       {:else if cell.value === 'kicked'}
         <span class="danger">Kicked</span>
+      {:else if cell.value === 'left'}
+        <span class="danger">Left</span>
       {:else}
         {cell.value}
       {/if}
