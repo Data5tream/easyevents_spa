@@ -4,6 +4,7 @@
     BreadcrumbItem,
     Column,
     Grid,
+    InlineNotification,
     Link,
     Row,
     Tab,
@@ -69,6 +70,14 @@
             <Tile>
               <h3>Invite link</h3>
               <p><Link icon={Launch} href={event_link} target="_blank" rel="noreferrer">{event_link}</Link></p>
+              {#if event.max_participants === participants.length}
+                <InlineNotification
+                  hideCloseButton
+                  kind="warning"
+                  title="Warning: This event is currently full."
+                  subtitle="No new participants will be able to join"
+                />
+              {/if}
             </Tile>
           </Column>
         </Row>
