@@ -50,7 +50,7 @@
 
 <Grid noGutter>
   <Row>
-    <Column lg={8} style='margin-bottom: 1rem'>
+    <Column lg={8}>
       <Tile>
         <h3>Title</h3>
         <p>{title}</p>
