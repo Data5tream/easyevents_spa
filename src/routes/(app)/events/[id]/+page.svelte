@@ -10,7 +10,7 @@
     Tab,
     TabContent,
     Tabs,
-    Tile
+    Tile,
   } from 'carbon-components-svelte';
   import { Launch } from 'carbon-icons-svelte';
   import { PUBLIC_API_HOST } from '$env/static/public';

@@ -8,7 +8,7 @@
     InlineNotification,
     PasswordInput,
     Row,
-    TextInput
+    TextInput,
   } from 'carbon-components-svelte';
 
   import { login } from '$lib/auth_service';

@@ -13,7 +13,7 @@
     Select,
     SelectItem,
     TextArea,
-    TextInput
+    TextInput,
   } from 'carbon-components-svelte';
   import EventThemePreview from '$lib/components/EventThemePreview.svelte';
   import { createEventDispatcher } from 'svelte';

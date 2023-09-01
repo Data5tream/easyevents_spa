@@ -11,7 +11,7 @@
     SideNav,
     SideNavItems,
     SideNavLink,
-    SkipToContent
+    SkipToContent,
   } from 'carbon-components-svelte';
   import { Dashboard, Events, EventSchedule, UserAvatarFilledAlt } from 'carbon-icons-svelte';
   import { isMobile, user } from '$lib/stores';
@@ -29,12 +29,12 @@
     {
       icon: Dashboard,
       text: 'Dashboard',
-      href: '/'
+      href: '/',
     },
     {
       icon: EventSchedule,
       text: 'Events',
-      href: '/events'
+      href: '/events',
     },
   ];
 

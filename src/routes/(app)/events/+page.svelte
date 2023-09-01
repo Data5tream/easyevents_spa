@@ -10,7 +10,7 @@
     DataTableSkeleton,
     Toolbar,
     ToolbarContent,
-    ToolbarSearch
+    ToolbarSearch,
   } from 'carbon-components-svelte';
   import { pageTitle } from '$lib/stores';
   import { goto } from '$app/navigation';
@@ -25,32 +25,32 @@
   const headers = [
     {
       value: 'ID',
-      key: 'id'
+      key: 'id',
     },
     {
       value: 'Title',
-      key: 'title'
+      key: 'title',
     },
     {
       value: 'Start',
-      key: 'start_date'
+      key: 'start_date',
     },
     {
       value: 'End',
-      key: 'end_date'
+      key: 'end_date',
     },
     {
       value: 'Signup start',
-      key: 'signup_start'
+      key: 'signup_start',
     },
     {
       value: 'Signup end',
-      key: 'signup_end'
+      key: 'signup_end',
     },
     {
       value: 'Participants',
-      key: 'participants'
-    }
+      key: 'participants',
+    },
   ];
 
   const toEvent = (row: DataTableRow) => {

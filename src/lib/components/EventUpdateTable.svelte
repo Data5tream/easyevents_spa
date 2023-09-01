@@ -9,7 +9,7 @@
     id: i,
     name: `${u.user.first_name} ${u.user.last_name}`,
     event_type: u.event_type,
-    timestamp: new Date(u.timestamp).toLocaleString()
+    timestamp: new Date(u.timestamp).toLocaleString(),
   }));
 
   let pageSize = 10;
@@ -23,7 +23,7 @@
     headers={[
       { key: 'name', value: 'Name' },
       { key: 'event_type', value: 'Action' },
-      { key: 'timestamp', value: 'Timestamp' }
+      { key: 'timestamp', value: 'Timestamp' },
     ]}
     rows={updates}
     {pageSize}

@@ -7,8 +7,8 @@
   $: stats = [
     {
       title: 'Events',
-      count: events
-    }
+      count: events,
+    },
   ];
 </script>
 

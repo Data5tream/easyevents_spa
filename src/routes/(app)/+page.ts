@@ -9,6 +9,6 @@ export const load: PageLoad = async () => {
   }
 
   return {
-    data
+    data,
   };
 };

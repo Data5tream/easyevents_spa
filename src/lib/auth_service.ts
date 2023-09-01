@@ -9,7 +9,7 @@ export const login = async (username: string, password: string): Promise<{ statu
 
   const res = await fetch(`${PUBLIC_API_HOST}/api/token`, {
     method: 'POST',
-    body: form
+    body: form,
   });
 
   const status = res.status;
@@ -19,7 +19,7 @@ export const login = async (username: string, password: string): Promise<{ statu
 
     const dataEle = {
       accessKey: data.access,
-      refreshKey: data.refresh
+      refreshKey: data.refresh,
     };
 
     keys.set(dataEle);
@@ -42,7 +42,7 @@ export const refreshAccessToken = async (refresh: string) => {
   const res = await fetch(`${PUBLIC_API_HOST}/api/token/refresh`, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
-    body: JSON.stringify({ refresh })
+    body: JSON.stringify({ refresh }),
   });
 
   if (res.status === 200) {
@@ -56,7 +56,7 @@ export const refreshAccessToken = async (refresh: string) => {
 export const makeApiCall = async (url: string, config: RequestInit): Promise<Response> => {
   let keysVal = {
     accessKey: '',
-    refreshKey: ''
+    refreshKey: '',
   };
 
   keys.subscribe((value) => {
@@ -71,8 +71,8 @@ export const makeApiCall = async (url: string, config: RequestInit): Promise<Res
     ...config,
     headers: new Headers({
       Authorization: `Bearer ${keysVal.accessKey}`,
-      'Content-Type': 'application/json'
-    })
+      'Content-Type': 'application/json',
+    }),
   };
 
   const res = await fetch(`${PUBLIC_API_HOST}/${url}`, init);

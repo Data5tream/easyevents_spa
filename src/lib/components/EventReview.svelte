@@ -15,12 +15,12 @@
   const headers = [
     {
       key: 'key',
-      value: 'What?'
+      value: 'What?',
     },
     {
       key: 'value',
-      value: 'When?'
-    }
+      value: 'When?',
+    },
   ];
 
   let rows: Array<DataTableRow> = [];
@@ -28,23 +28,23 @@
     {
       id: 0,
       key: 'Signup start',
-      value: signupStart.toLocaleString()
+      value: signupStart.toLocaleString(),
     },
     {
       id: 1,
       key: 'Signup end',
-      value: signupEnd.toLocaleString()
+      value: signupEnd.toLocaleString(),
     },
     {
       id: 2,
       key: 'Event start',
-      value: eventStart.toLocaleString()
+      value: eventStart.toLocaleString(),
     },
     {
       id: 3,
       key: 'Event end',
-      value: eventEnd.toLocaleString()
-    }
+      value: eventEnd.toLocaleString(),
+    },
   ];
 </script>
 

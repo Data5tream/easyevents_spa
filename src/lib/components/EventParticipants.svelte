@@ -6,7 +6,7 @@
     Loading,
     Modal,
     Toolbar,
-    ToolbarBatchActions
+    ToolbarBatchActions,
   } from 'carbon-components-svelte';
   import type { EventParticipant } from '$lib/api_service';
   import { removeEventParticipants } from '$lib/api_service';
@@ -22,16 +22,16 @@
   const headers = [
     {
       key: 'first_name',
-      value: 'First name'
+      value: 'First name',
     },
     {
       key: 'last_name',
-      value: 'Last name'
+      value: 'Last name',
     },
     {
       key: 'email',
-      value: 'Email'
-    }
+      value: 'Email',
+    },
   ];
 
   let title: string;

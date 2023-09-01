@@ -12,7 +12,7 @@
   $: updates = data.data.updates.map((upd: EventUpdate) => ({
     ...upd,
     name: `${upd.user.first_name} ${upd.user.last_name}`,
-    id: `${upd.user.email}-${upd.timestamp}`
+    id: `${upd.user.email}-${upd.timestamp}`,
   }));
 
   pageTitle.set('Dashboard');
@@ -37,7 +37,7 @@
           { key: 'name', value: 'Name' },
           { key: 'event.title', value: 'Event' },
           { key: 'event_type', value: 'Action' },
-          { key: 'timestamp', value: 'Timestamp' }
+          { key: 'timestamp', value: 'Timestamp' },
         ]}
         rows={updates}
       >

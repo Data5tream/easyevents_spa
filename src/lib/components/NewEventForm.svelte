@@ -16,7 +16,7 @@
     TextArea,
     TextInput,
     Tile,
-    Toggle
+    Toggle,
   } from 'carbon-components-svelte';
   import { isMobile } from '$lib/stores.js';
   import EventDateTimePicker from '$lib/components/EventDateTimePicker.svelte';
@@ -103,7 +103,7 @@
       start_date: eventStart.toISOString(),
       end_date: eventEnd.toISOString(),
       signup_start: signupStart.toISOString(),
-      signup_end: signupEnd.toISOString()
+      signup_end: signupEnd.toISOString(),
     });
 
     loading = false;

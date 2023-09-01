@@ -81,7 +81,7 @@ export const loadEvent = async (id: string): Promise<ApiEvent | null> => {
 export const createEvent = async (data: BaseApiEvent): Promise<number | null> => {
   const res = await makeApiCall('/api/event/new', {
     method: 'post',
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   });
   if (res.status === 201) {
     return (await res.json()).id;
@@ -92,7 +92,7 @@ export const createEvent = async (data: BaseApiEvent): Promise<number | null> =>
 export const changePassword = async (old_password: string, new_password1: string, new_password2: string) => {
   const res = await makeApiCall('/api/account/change_password', {
     method: 'post',
-    body: JSON.stringify({ old_password, new_password1, new_password2 })
+    body: JSON.stringify({ old_password, new_password1, new_password2 }),
   });
   if (res.status === 204) {
     return 'success';
@@ -104,7 +104,7 @@ export const changePassword = async (old_password: string, new_password1: string
 export const updateAccountDetails = async (first_name: string, last_name: string) => {
   const res = await makeApiCall('/api/account/details', {
     method: 'post',
-    body: JSON.stringify({ first_name, last_name })
+    body: JSON.stringify({ first_name, last_name }),
   });
   return res.status === 204;
 };
@@ -118,7 +118,7 @@ export const updateEventDetails = async (
 ) => {
   const res = await makeApiCall(`/api/event/${id}`, {
     method: 'put',
-    body: JSON.stringify({ title, description, template, details_url })
+    body: JSON.stringify({ title, description, template, details_url }),
   });
 
   return res.status === 200;
@@ -127,7 +127,7 @@ export const updateEventDetails = async (
 export const removeEventParticipants = async (id: number, participants: Array<number>) => {
   const res = await makeApiCall(`/api/event/${id}/participants`, {
     method: 'delete',
-    body: JSON.stringify({ participants })
+    body: JSON.stringify({ participants }),
   });
 
   return res.status === 200;
