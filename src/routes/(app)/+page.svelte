@@ -5,6 +5,8 @@
   import QuickStats from '$lib/components/QuickStats.svelte';
   import QuickLinks from '$lib/components/QuickLinks.svelte';
   import type { EventUpdate } from '$lib/api_service';
+  import { onDestroy, onMount } from 'svelte';
+  import { invalidateAll } from '$app/navigation';
 
   export let data;
 
@@ -14,6 +16,15 @@
     name: `${upd.user.first_name} ${upd.user.last_name}`,
     id: `${upd.user.email}-${upd.timestamp}`,
   }));
+
+  // Update data every 5 seconds. so we get the newest updates
+  let updateInterval: number;
+  onMount(() => {
+    updateInterval = setInterval(invalidateAll, 10000);
+  });
+  onDestroy(() => {
+    clearInterval(updateInterval);
+  })
 
   pageTitle.set('Dashboard');
 </script>
