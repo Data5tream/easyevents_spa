@@ -50,7 +50,7 @@
       <HeaderPanelLinks>
         <HeaderPanelLink>{$user.first_name} {$user.last_name} ({$user.email})</HeaderPanelLink>
         <HeaderPanelDivider>Account</HeaderPanelDivider>
-        <HeaderPanelLink href="/account">Account Settings</HeaderPanelLink>
+        <HeaderPanelLink href="/account" on:click={() => (isAccMenuOpen = false)}>Account Settings</HeaderPanelLink>
         <HeaderPanelDivider>Actions</HeaderPanelDivider>
         <HeaderPanelLink href="/logout">Logout</HeaderPanelLink>
       </HeaderPanelLinks>
