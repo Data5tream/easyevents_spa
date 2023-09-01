@@ -24,7 +24,7 @@
   });
   onDestroy(() => {
     clearInterval(updateInterval);
-  })
+  });
 
   pageTitle.set('Dashboard');
 </script>
