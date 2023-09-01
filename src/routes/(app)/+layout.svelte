@@ -36,11 +36,6 @@
       text: 'Events',
       href: '/events'
     },
-    {
-      icon: Events,
-      text: 'Participants',
-      href: ''
-    }
   ];
 
   loadProfile();
