@@ -2,7 +2,6 @@
 
 This webapp allows organizers to create and manage events.
 
-
 ## Developing
 
 ```bash
