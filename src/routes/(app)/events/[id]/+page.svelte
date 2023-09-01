@@ -1,5 +1,4 @@
 <script lang="ts">
-  import EventReview from '$lib/components/EventReview.svelte';
   import {
     Breadcrumb,
     BreadcrumbItem,
@@ -13,12 +12,13 @@
     Tile
   } from 'carbon-components-svelte';
   import { Launch } from 'carbon-icons-svelte';
-  import EventParticipants from '$lib/components/EventParticipants.svelte';
   import { PUBLIC_API_HOST } from '$env/static/public';
+  import EventParticipants from '$lib/components/EventParticipants.svelte';
   import EventSettings from '$lib/components/EventSettings.svelte';
+  import EventReview from '$lib/components/EventReview.svelte';
+  import EventUpdateTable from '$lib/components/EventUpdateTable.svelte';
   import { pageTitle } from '$lib/stores';
   import { loadEvent } from '$lib/api_service';
-  import EventUpdateTable from '$lib/components/EventUpdateTable.svelte';
 
   export let data;
   let event = data.event;
