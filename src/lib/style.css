@@ -9,3 +9,9 @@ h3 {
 .bx--row:not(:only-child) {
   margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 1056px) {
+  .bx--row > div:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
