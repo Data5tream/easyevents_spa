@@ -2,6 +2,8 @@
 
 This webapp allows organizers to create and manage events.
 
+For server-side, take a look at [easyevents_api](https://github.com/Data5tream/easyevents_api).
+
 ## Developing
 
 ```bash
