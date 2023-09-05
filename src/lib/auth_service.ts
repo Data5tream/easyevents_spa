@@ -1,4 +1,4 @@
-import { PUBLIC_API_HOST } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import { keys } from '$lib/stores';
 import { goto } from '$app/navigation';
 
@@ -7,7 +7,7 @@ export const login = async (username: string, password: string): Promise<{ statu
   form.set('username', username);
   form.set('password', password);
 
-  const res = await fetch(`${PUBLIC_API_HOST}/api/token`, {
+  const res = await fetch(`${env.PUBLIC_API_HOST}/api/token`, {
     method: 'POST',
     body: form,
   });
@@ -39,7 +39,7 @@ export const logout = () => {
 };
 
 export const refreshAccessToken = async (refresh: string) => {
-  const res = await fetch(`${PUBLIC_API_HOST}/api/token/refresh`, {
+  const res = await fetch(`${env.PUBLIC_API_HOST}/api/token/refresh`, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify({ refresh }),
@@ -75,7 +75,7 @@ export const makeApiCall = async (url: string, config: RequestInit): Promise<Res
     }),
   };
 
-  const res = await fetch(`${PUBLIC_API_HOST}/${url}`, init);
+  const res = await fetch(`${env.PUBLIC_API_HOST}/${url}`, init);
   if (res.status === 401) {
     if (await refreshAccessToken(keysVal.refreshKey)) {
       return makeApiCall(url, config);

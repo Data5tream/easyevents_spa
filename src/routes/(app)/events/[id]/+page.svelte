@@ -13,7 +13,7 @@
     Tile,
   } from 'carbon-components-svelte';
   import { Launch } from 'carbon-icons-svelte';
-  import { PUBLIC_API_HOST } from '$env/static/public';
+  import { env } from '$env/dynamic/public';
   import EventParticipants from '$lib/components/EventParticipants.svelte';
   import EventSettings from '$lib/components/EventSettings.svelte';
   import EventReview from '$lib/components/EventReview.svelte';
@@ -24,7 +24,7 @@
   export let data;
   let event = data.event;
   let participants = data.event.participants;
-  const event_link = `${PUBLIC_API_HOST}/signup/${event.id}/${encodeURIComponent(event.title)}`;
+  const event_link = `${env.PUBLIC_API_HOST}/signup/${event.id}/${encodeURIComponent(event.title)}`;
 
   const refreshEvent = async () => {
     const res = await loadEvent(event.id.toString());
